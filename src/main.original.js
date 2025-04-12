@@ -1,3 +1,4 @@
+// TODO: 과제 시작!
 var prodList, sel, addBtn, cartDisp, sum, stockInfo;
 var lastSel, bonusPts=0, totalAmt=0, itemCnt=0;
 function main() {
