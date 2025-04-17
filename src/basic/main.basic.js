@@ -12,64 +12,25 @@ var lastSelectedProductId,
 
 //FIXME: DOM 생성 함수 추출하기
 /**
- * DOM 요소를 생성 함수
+ * DOM 요소 생성 함수
  * @param {string} tagName - 생성할 HTML 태그 이름
  * @param {Object} options - 요소 설정 옵션
- * @param {string} [options.id] - 요소의 ID
- * @param {string} [options.className] - 요소의 클래스 이름
- * @param {string} [options.textContent] - 요소의 텍스트 내용
- * @param {string} [options.innerHTML] - 요소의 HTML 내용
- * @param {Array} [options.children] - 추가할 자식 요소 배열
- * @param {Object} [options.attributes] - 추가할 속성 객체 (key-value 쌍)
- * @param {Function} [options.onClick] - 클릭 이벤트 핸들러
  * @returns {HTMLElement} 생성된 DOM 요소
  */
-
 function createDOM(tagName, options = {}) {
     // 요소 생성
     const element = document.createElement(tagName);
 
-    // ID 설정
-    if (options.id) {
-        element.id = options.id;
-    }
+    const { parent, ...rest } = options;
 
-    // 클래스 설정
-    if (options.className) {
-        element.className = options.className;
+    Object.entries(rest).forEach(([key, value]) => {
+        // element.setAttribute(key, value);
+        element[key] = value;
+    });
+    // appendChild 할 parent 를 변수로 넘겨준다면!!
+    if (parent) {
+        parent.appendChild(element);
     }
-
-    // 텍스트 설정
-    if (options.textContent) {
-        element.textContent = options.textContent;
-    }
-
-    // HTML 내용 설정
-    if (options.innerHTML) {
-        element.innerHTML = options.innerHTML;
-    }
-
-    // 추가 속성 설정
-    if (options.attributes) {
-        Object.entries(options.attributes).forEach(([key, value]) => {
-            element.setAttribute(key, value);
-        });
-    }
-
-    // 이벤트 핸들러 설정
-    if (options.onClick) {
-        element.addEventListener('click', options.onClick);
-    }
-
-    // 자식 요소 추가
-    if (options.children && Array.isArray(options.children)) {
-        options.children.forEach((child) => {
-            if (child) {
-                element.appendChild(child);
-            }
-        });
-    }
-
     return element;
 }
 
@@ -78,41 +39,46 @@ function createDOM(tagName, options = {}) {
  */
 
 function main() {
-    // FIXME: 레이아웃 생성하는 함수를 따로 추출
     // 요소 생성
     var root = document.getElementById('app');
 
-    // 컨테이너 생성
+    // 메인 컨테이너 생성
     const container = createDOM('div', {
         className: 'bg-gray-100 p-8',
+        parent: root,
     });
 
     // 래퍼 생성
     const wrapper = createDOM('div', {
         className: 'max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-8',
+        parent: container,
     });
 
     // 헤더 생성
     const header = createDOM('h1', {
         className: 'text-2xl font-bold mb-4',
         textContent: '장바구니',
+        parent: wrapper,
     });
 
     // 장바구니 할당
     $cartDisplay = createDOM('div', {
         id: 'cart-items',
+        parent: wrapper,
     });
 
     // 총액 할당
     $sum = createDOM('div', {
         id: 'cart-total',
         className: 'text-xl font-bold my-4',
+        parent: wrapper,
     });
 
     // 상품 선택 할당
     $select = createDOM('select', {
         id: 'product-select',
         className: 'border rounded p-2 mr-2',
+        parent: wrapper,
     });
 
     // 추가 버튼 할당
@@ -120,22 +86,16 @@ function main() {
         id: 'add-to-cart',
         className: 'bg-blue-500 text-white px-4 py-2 rounded',
         textContent: '추가',
+        parent: wrapper,
     });
 
     // 재고 정보 할당
     $stockInformation = createDOM('div', {
         id: 'stock-status',
         className: 'text-sm text-gray-500 mt-2',
+        parent: wrapper,
     });
 
-    // 요소 초기 렌더링
-    wrapper.appendChild(header);
-    wrapper.appendChild($cartDisplay);
-    wrapper.appendChild($sum);
-    wrapper.appendChild($select);
-    wrapper.appendChild($addButton);
-    wrapper.appendChild($stockInformation);
-    container.appendChild(wrapper);
     root.appendChild(container);
 
     // 추가 버튼 이벤트 처리
