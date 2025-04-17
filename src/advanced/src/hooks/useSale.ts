@@ -41,7 +41,7 @@ export const useSale = (
 
         scheduleRandomEvent(applyFlashSale, 30000, 10000);
         scheduleRandomEvent(applyRecommendationSale, 60000, 20000);
-    }, [selectedProductId]);
+    }, []);
 
     return { applyFlashSale, applyRecommendationSale };
 };
