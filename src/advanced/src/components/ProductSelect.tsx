@@ -14,7 +14,6 @@ export const ProductSelect: React.FC<ProductSelectProps> = ({ products, selected
             onChange={(e) => onProductSelect(e.target.value)}
             className="border rounded p-2 mr-2"
         >
-            <option value="">상품 선택</option>
             {products.map((product) => (
                 <option key={product.id} value={product.id} disabled={product.quantity === 0}>
                     {product.name} - {product.price.toLocaleString()}원

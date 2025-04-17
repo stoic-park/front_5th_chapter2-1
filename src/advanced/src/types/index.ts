@@ -6,7 +6,7 @@ export interface Product {
     discountRate: number;
 }
 
-export interface CartItem {
+export interface CartItemType {
     product: Product;
     quantity: number;
 }

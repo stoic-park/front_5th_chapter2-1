@@ -1,7 +1,7 @@
-import { CartItem } from '../types';
+import { CartItemType } from '../types';
 
 export const useDiscount = () => {
-    const calculateTotal = (cartItems: CartItem[]) => {
+    const calculateTotal = (cartItems: CartItemType[]) => {
         let subTotal = 0;
         let total = 0;
         let itemCount = 0;

@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Product, CartItem } from '../types';
+import { Product, CartItemType } from '../types';
 
 export const useCart = (initialProducts: Product[]) => {
     const [products, setProducts] = useState<Product[]>(initialProducts);
-    const [cartItems, setCartItems] = useState<CartItem[]>([]);
-    const [selectedProductId, setSelectedProductId] = useState<string>('');
+    const [cartItems, setCartItems] = useState<CartItemType[]>([]);
+    const [selectedProductId, setSelectedProductId] = useState<string>(
+        initialProducts.length > 0 ? initialProducts[0].id : ''
+    );
 
     const handleAddToCart = () => {
         if (!selectedProductId) return;
