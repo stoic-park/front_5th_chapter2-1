@@ -5,7 +5,7 @@ import { createDOM } from '../utils';
  */
 export const createCartItem = (product) => {
     const $cartDisplay = document.getElementById('cart-items');
-    var $newItem = createDOM('div', {
+    let $newItem = createDOM('div', {
         id: product.id,
         className: 'flex justify-between items-center mb-2',
         parent: $cartDisplay,
@@ -16,7 +16,7 @@ export const createCartItem = (product) => {
         parent: $newItem,
     });
 
-    var $buttonGroup = createDOM('div', {
+    let $buttonGroup = createDOM('div', {
         parent: $newItem,
     });
 

@@ -5,24 +5,24 @@ import { renderCartTotal } from '../render';
  */
 export const calculateCart = (products) => {
     // 할인 전 금액
-    var subTotal = 0;
+    let subTotal = 0;
     // 총 금액
-    var totalPrice = 0;
+    let totalPrice = 0;
     // 총 개수 초기화
-    var totalQuantity = 0;
+    let totalQuantity = 0;
     // 할인 초기화
-    var discountRate = 0;
+    let discountRate = 0;
 
     // 장바구니 아이템 목록
     const $cartDisplay = document.getElementById('cart-items');
     const cartItems = $cartDisplay.children;
 
     // 장바구니 아이템 목록 반복
-    for (var i = 0; i < cartItems.length; i++) {
+    for (let i = 0; i < cartItems.length; i++) {
         // 현재 아이템
         let currentItem;
         // 상품 목록 반복
-        for (var j = 0; j < products.length; j++) {
+        for (let j = 0; j < products.length; j++) {
             // 현재 아이템 찾기
             if (products[j].id === cartItems[i].id) {
                 currentItem = products[j];
@@ -55,9 +55,9 @@ export const calculateCart = (products) => {
     // 30개 이상 구매 시 할인 적용
     if (totalQuantity >= 30) {
         // 대량 할인 적용
-        var bulkDiscount = totalPrice * 0.25;
+        let bulkDiscount = totalPrice * 0.25;
         // 아이템 할인 적용
-        var itemDiscount = subTotal - totalPrice;
+        let itemDiscount = subTotal - totalPrice;
         // 대량 할인 적용
         if (bulkDiscount > itemDiscount) {
             totalPrice = subTotal * (1 - 0.25);

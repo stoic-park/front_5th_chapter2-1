@@ -9,19 +9,19 @@ import { calculateCart } from './calculateCart';
 export const handleCartAdd = () => {
     const $select = document.getElementById('product-select');
     // 선택 아이템 찾기
-    var selectedProductId = $select.value;
-    var selectedProduct = products.find(function (item) {
+    let selectedProductId = $select.value;
+    let selectedProduct = products.find(function (item) {
         return item.id === selectedProductId;
     });
 
     // 상품 존재 및 재고 있을 시
     if (selectedProduct && selectedProduct.quantity > 0) {
         // 상품 아이템 찾기
-        var $cartItem = document.getElementById(selectedProduct.id);
+        let $cartItem = document.getElementById(selectedProduct.id);
         // 상품 아이템 존재 시
         if ($cartItem) {
             // 상품 아이템 개수 증가
-            var newQuantity = parseInt($cartItem.querySelector('span').textContent.split('x ')[1]) + 1;
+            let newQuantity = parseInt($cartItem.querySelector('span').textContent.split('x ')[1]) + 1;
             // 상품 아이템 개수 증가 시 재고 있을 시
             if (newQuantity <= selectedProduct.quantity) {
                 // 상품 아이템 텍스트 업데이트

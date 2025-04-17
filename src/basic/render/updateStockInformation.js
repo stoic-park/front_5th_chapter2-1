@@ -3,7 +3,7 @@
  */
 export const updateStockInformation = (products) => {
     const $stockInformation = document.getElementById('stock-status');
-    var informationMessage = '';
+    let informationMessage = '';
     products.forEach(function (item) {
         // 재고 부족 시 재고 정보 추가
         if (item.quantity < 5) {

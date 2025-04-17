@@ -25,7 +25,7 @@ function main() {
 
     // 번개 세일 함수
     const applyFlashSale = () => {
-        var luckyItem = products[Math.floor(Math.random() * products.length)];
+        let luckyItem = products[Math.floor(Math.random() * products.length)];
         if (Math.random() < 0.3 && luckyItem.quantity > 0) {
             luckyItem.price = Math.round(luckyItem.price * 0.8);
             alert('번개세일! ' + luckyItem.name + '이(가) 20% 할인 중입니다!');
@@ -36,7 +36,7 @@ function main() {
     // 추천 상품 세일 함수
     const applyRecommendationSale = () => {
         if (lastSelectedProductId) {
-            var suggest = products.find(function (item) {
+            let suggest = products.find(function (item) {
                 return item.id !== lastSelectedProductId && item.quantity > 0;
             });
             if (suggest) {

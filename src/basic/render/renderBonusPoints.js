@@ -7,7 +7,7 @@ export const renderBonusPoints = ($sum, totalPrice) => {
     // 보너스 포인트 계산
     const bonusPoints = Math.floor(totalPrice / 1000);
     // 보너스 포인트 텍스트 설정
-    var $bonusPointsTag = document.getElementById('loyalty-points');
+    let $bonusPointsTag = document.getElementById('loyalty-points');
     // 보너스 포인트 텍스트 존재 시
     if (!$bonusPointsTag) {
         $bonusPointsTag = createDOM('span', {
