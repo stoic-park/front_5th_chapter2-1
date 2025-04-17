@@ -5,7 +5,7 @@ interface StockInformationProps {
     products: Product[];
 }
 
-export const StockInformation: React.FC<StockInformationProps> = ({ products }) => {
+export const StockInformation: React.FC<StockInformationProps> = React.memo(({ products }) => {
     return (
         <div className="text-sm text-gray-500 mt-2">
             {products.map(
@@ -18,4 +18,4 @@ export const StockInformation: React.FC<StockInformationProps> = ({ products }) 
             )}
         </div>
     );
-};
+});

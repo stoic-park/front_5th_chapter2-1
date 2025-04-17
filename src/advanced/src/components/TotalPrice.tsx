@@ -5,7 +5,7 @@ interface TotalPriceProps {
     discountRate: number;
 }
 
-export const TotalPrice: React.FC<TotalPriceProps> = ({ total, discountRate }) => {
+export const TotalPrice: React.FC<TotalPriceProps> = React.memo(({ total, discountRate }) => {
     const bonusPoints = Math.floor(total / 1000);
 
     return (
@@ -17,4 +17,4 @@ export const TotalPrice: React.FC<TotalPriceProps> = ({ total, discountRate }) =
             <span className="text-blue-500 ml-2">(포인트: {bonusPoints})</span>
         </div>
     );
-};
+});

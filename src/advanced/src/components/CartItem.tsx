@@ -7,7 +7,7 @@ interface CartItemProps {
     onRemove: (productId: string) => void;
 }
 
-export const CartItem: React.FC<CartItemProps> = ({ item, onQuantityChange, onRemove }) => {
+export const CartItem: React.FC<CartItemProps> = React.memo(({ item, onQuantityChange, onRemove }) => {
     return (
         <div className="flex justify-between items-center mb-2">
             <span>
@@ -35,4 +35,4 @@ export const CartItem: React.FC<CartItemProps> = ({ item, onQuantityChange, onRe
             </div>
         </div>
     );
-};
+});

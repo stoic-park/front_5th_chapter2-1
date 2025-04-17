@@ -8,7 +8,7 @@ interface CartItemListProps {
     onRemove: (productId: string) => void;
 }
 
-export const CartItemList: React.FC<CartItemListProps> = ({ cartItems, onQuantityChange, onRemove }) => {
+export const CartItemList: React.FC<CartItemListProps> = React.memo(({ cartItems, onQuantityChange, onRemove }) => {
     return (
         <div id="cart-items">
             {cartItems.map((item) => (
@@ -16,4 +16,4 @@ export const CartItemList: React.FC<CartItemListProps> = ({ cartItems, onQuantit
             ))}
         </div>
     );
-};
+});
